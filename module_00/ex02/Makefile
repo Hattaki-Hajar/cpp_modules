@@ -2,7 +2,7 @@ SRCS	= $(wildcard *.cpp)
 
 CC		= c++
 
-CFLAGS	= -Werror -Wextra -Wall -fsanitize=address -g3
+CFLAGS	= -Werror -Wextra
 
 NAME	= Account
 
@@ -15,7 +15,7 @@ MK_FILE	= Makefile
 
 all		: $(NAME)
 
-$(NAME)	: $(OBJS) $(MK_FILE)
+$(NAME)	: $(OBJS)
 		$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
 
 clean	:

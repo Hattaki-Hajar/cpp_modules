@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 21:14:16 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/11 18:29:58 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/14 13:13:07 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,23 @@ void	PhoneBook::fillcontact(void)
 
 	std::cout << "Enter first name: ";
 	std::getline(std::cin, line);
+	if (std::cin.eof())
+		return ;
 	c[spot].First_Name = get_str(line, "Enter first name: ");
 	std::cout << "Enter last name: ";
 	std::getline(std::cin, line);
+	if (std::cin.eof())
+		return ;
 	c[spot].Last_Name = get_str(line, "Enter last name: ");
 	std::cout << "Enter nickname: ";
 	std::getline(std::cin, line);
+	if (std::cin.eof())
+		return ;
 	c[spot].Nickname = get_str(line, "Enter nickname: ");
 	std::cout << "Enter phone number: ";
 	std::getline(std::cin, c[spot].Phone_Number);
+	if (std::cin.eof())
+		return ;
 	while (!all_numeric(c[spot].Phone_Number) || c[spot].Phone_Number.empty())
 	{
 		std::cout << "Numeric argument required" <<std::endl;
@@ -77,6 +85,8 @@ void	PhoneBook::fillcontact(void)
 	}
 	std::cout << "Enter darkest secret: ";
 	std::getline(std::cin, line);
+	if (std::cin.eof())
+		return ;
 	c[spot].Darkest_Secret = get_str(line, "Enter darkest secret: ");
 	spot++;
 	if (spot >= 8)
@@ -124,15 +134,22 @@ void	display_contact(Contact c, int i)
 void	PhoneBook::search_contact(void)
 {
 	std::string num;
-	int	i, n;
+	int	i, n, iter;
 
+	if (!full && !spot)
+	{
+		std::cout << "Phonebook is still empty!" << std::endl;
+		return ;
+	}
 	print_ten("index");
 	print_ten("first name");
 	print_ten("last name");
 	print_ten("nickname");
 	std::cout << std::endl;
-	int iterate = full ? 8 : spot;
-	for(i = 0; i < iterate ;i++)
+	iter = spot;
+	if (full)
+		iter = 8;
+	for(i = 0; i < iter ;i++)
 		display_contact(c[i], i);
 	std::cout << "Enter index to display: ";
 	std::getline(std::cin, num);
@@ -144,12 +161,12 @@ void	PhoneBook::search_contact(void)
 	n = std::atoi(num.c_str());
 	if ((full && n >= 0 && n <= 7) || (!full && n >= 0 && n <= spot - 1))
 	{
-		print_ten("index");
-		print_ten("first name");
-		print_ten("last name");
-		print_ten("nickname");
-		std::cout << std::endl;
-		display_contact(c[n], n);
+		std::cout << "Index: " << n << std::endl;
+		std::cout << "First name: " << c[n].First_Name << std::endl;
+		std::cout << "Last name: " << c[n].Last_Name << std::endl;
+		std::cout << "Nickname: " << c[n].Nickname << std::endl;
+		std::cout << "Phone number: " << c[n].Phone_Number << std::endl;
+		std::cout << "Darkest secret: " << c[n].Darkest_Secret << std::endl;
 	}
 	else
 		std::cout << "Invalid index" << std::endl;

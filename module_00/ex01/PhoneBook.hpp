@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 21:14:11 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/11 15:06:21 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/13 14:34:02 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ public:
 	int	full;
 	void	fillcontact(void);
 	void	search_contact(void);
-	// void	display
 };
 
 #endif

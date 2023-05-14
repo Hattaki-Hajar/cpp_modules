@@ -2,7 +2,7 @@ SRCS	= megaphone.cpp
 
 CC		= c++
 
-CFLAGS	= -Werror -Wextra -Wall
+CFLAGS	= -Werror -Wextra -Wall -std=c++98
 
 NAME	= megaphone
 
@@ -15,7 +15,7 @@ MK_FILE	= Makefile
 
 all		: $(NAME)
 
-$(NAME)	: $(OBJS) $(MK_FILE)
+$(NAME)	: $(OBJS)
 		$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
 
 clean	:
