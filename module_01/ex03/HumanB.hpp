@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ZombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 15:18:29 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/16 21:28:22 by hhattaki         ###   ########.fr       */
+/*   Created: 2023/05/16 22:59:39 by hhattaki          #+#    #+#             */
+/*   Updated: 2023/05/17 16:03:14 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-Zombie* ZombieHorde( int N, std::string name )
+#include "Weapon.hpp"
+
+class HumanB
 {
-	Zombie	*horde;
-	int	i = 0;
+	Weapon	*armed;
+	std::string	name;
 
-	if (N <= 0)
-	{
-		std::cout << "Invalid argument" << std::endl;
-		exit(-1);
-	}
-	horde = new Zombie[N];
-	while(i < N)
-	{
-		horde[i].set_name(name);
-		// horde[i].index = i;
-		i++;
-	}
-	return (horde);
-}
+public:
+	void	setWeapon(Weapon &weapon);
+	void	attack(void);
+	HumanB(void);
+	HumanB(std::string name);
+	~HumanB(void);
+};
+
+#endif

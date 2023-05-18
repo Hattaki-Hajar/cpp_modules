@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ZombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 15:18:29 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/16 21:28:22 by hhattaki         ###   ########.fr       */
+/*   Created: 2023/05/16 22:34:03 by hhattaki          #+#    #+#             */
+/*   Updated: 2023/05/17 16:07:16 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
-Zombie* ZombieHorde( int N, std::string name )
+int main()
 {
-	Zombie	*horde;
-	int	i = 0;
-
-	if (N <= 0)
-	{
-		std::cout << "Invalid argument" << std::endl;
-		exit(-1);
-	}
-	horde = new Zombie[N];
-	while(i < N)
-	{
-		horde[i].set_name(name);
-		// horde[i].index = i;
-		i++;
-	}
-	return (horde);
+{
+	Weapon club = Weapon("crude spiked club");
+	HumanA bob("Bob", club);
+	bob.attack();
+	club.setType("some other type of club");
+	bob.attack();
+}
+{
+	Weapon club = Weapon("crude spiked club");
+	HumanB jim("Jim");
+	jim.setWeapon(club);
+	jim.attack();
+	club.setType("some other type of club");
+	jim.attack();
+}
+// system("leaks Fight");
+	return 0;
 }
