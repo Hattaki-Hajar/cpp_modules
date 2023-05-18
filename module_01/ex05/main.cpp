@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_replace.hpp                                 :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/17 17:09:29 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/18 17:41:59 by hhattaki         ###   ########.fr       */
+/*   Created: 2023/05/18 19:31:05 by hhattaki          #+#    #+#             */
+/*   Updated: 2023/05/18 21:52:32 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SEARCH_REPLACE_HPP
-# define SEARCH_REPLACE_HPP
+#include"Harl.hpp"
 
-#include <iostream>
-#include <fstream>
+int main(int ac, char **av)
+{
+	if (ac == 2)
+	{
+		Harl harl;
 
-std::string	replace_content(std::string line, std::string search, std::string replace);
-
-#endif
+		harl.complain(av[1]);
+	}
+}

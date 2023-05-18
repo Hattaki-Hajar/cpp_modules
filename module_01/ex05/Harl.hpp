@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_replace.hpp                                 :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/17 17:09:29 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/18 17:41:59 by hhattaki         ###   ########.fr       */
+/*   Created: 2023/05/18 18:18:55 by hhattaki          #+#    #+#             */
+/*   Updated: 2023/05/18 18:21:43 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SEARCH_REPLACE_HPP
-# define SEARCH_REPLACE_HPP
+#ifndef HARL_HPP
+# define HARL_HPP
 
-#include <iostream>
-#include <fstream>
+# include<iostream>
 
-std::string	replace_content(std::string line, std::string search, std::string replace);
+class	Harl
+{
+private:
+	void debug( void );
+	void info( void );
+	void warning( void );
+	void error( void );
+	
+public:
+	void complain( std::string level );
+	Harl(void);
+	~Harl(void);
+};
 
 #endif
