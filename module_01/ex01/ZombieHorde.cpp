@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:18:29 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/16 21:28:22 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/18 22:51:47 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ Zombie* ZombieHorde( int N, std::string name )
 	while(i < N)
 	{
 		horde[i].set_name(name);
-		// horde[i].index = i;
 		i++;
 	}
 	return (horde);

@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:24:32 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/18 22:00:11 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/18 22:47:46 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(int ac, char **av)
 			return 0;
 		}
 		in_file.open(file);
-		if (in_file.bad())
+		if (in_file.bad() || in_file.fail())
 		{
 			std::cout << "Couldn't open file!" << std::endl;
 			return (0);
