@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 15:49:11 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/19 15:19:16 by hhattaki         ###   ########.fr       */
+/*   Created: 2023/05/22 14:02:18 by hhattaki          #+#    #+#             */
+/*   Updated: 2023/05/22 14:20:10 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#pragma once
 
-int main()
+#include "Fixed.hpp"
+
+class Point
 {
-	Zombie	*meh;
-
-	meh = ZombieHorde(2, "Bob");
-	delete[] meh;
+private:
+	const Fixed	x;
+	const Fixed	y;
+	
+public:
+	Point();
+	Point(float one, float two);
+	Point(const Point &copy);
+	Point& operator=(const Point& other);
+	~Point();
 }

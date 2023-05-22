@@ -5,17 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 15:49:11 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/19 15:19:16 by hhattaki         ###   ########.fr       */
+/*   Created: 2023/05/21 17:31:57 by hhattaki          #+#    #+#             */
+/*   Updated: 2023/05/21 17:32:31 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Fixed.hpp"
 
-int main()
+int main( void )
 {
-	Zombie	*meh;
-
-	meh = ZombieHorde(2, "Bob");
-	delete[] meh;
+	Fixed a;
+	Fixed b( a );
+	Fixed c;
+	c = b;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return 0;
 }

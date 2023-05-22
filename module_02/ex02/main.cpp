@@ -5,17 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 15:49:11 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/19 15:19:16 by hhattaki         ###   ########.fr       */
+/*   Created: 2023/05/22 12:36:55 by hhattaki          #+#    #+#             */
+/*   Updated: 2023/05/22 13:34:08 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Fixed.hpp"
 
-int main()
+std::ostream& operator<<(std::ostream &os, const Fixed& point)
 {
-	Zombie	*meh;
+	os << point.toFloat();
+	return (os);
+}
 
-	meh = ZombieHorde(2, "Bob");
-	delete[] meh;
+int main( void )
+{
+	Fixed a;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
+	return 0;
 }

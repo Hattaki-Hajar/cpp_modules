@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 15:49:11 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/19 15:19:16 by hhattaki         ###   ########.fr       */
+/*   Created: 2023/05/22 14:15:36 by hhattaki          #+#    #+#             */
+/*   Updated: 2023/05/22 14:22:33 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Point.hpp"
 
-int main()
+Point::Point();
 {
-	Zombie	*meh;
+	x.setRawBits(0);
+	y.setRawBits(0);
+	std::cout << "Default constructor called" << std::endl;
+}
 
-	meh = ZombieHorde(2, "Bob");
-	delete[] meh;
+Point::Point(float one, float two)
+{
+	x.Fixed(one);
+	x.Fixed(one);
+	std::cout << "Parameterized constructor called" << std::endl;
+}
+
+Point::Point(const Point &copy)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	*this = copy;
 }

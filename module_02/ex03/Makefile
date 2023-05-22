@@ -4,7 +4,7 @@ CC		= c++
 
 CFLAGS	= -Werror -Wextra -Wall -std=c++98
 
-NAME	= violence
+NAME	= bsp
 
 OBJS	= $(SRCS:.cpp=.o)
 

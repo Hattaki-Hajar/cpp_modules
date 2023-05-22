@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 15:49:11 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/19 15:19:16 by hhattaki         ###   ########.fr       */
+/*   Created: 2023/05/21 16:06:35 by hhattaki          #+#    #+#             */
+/*   Updated: 2023/05/21 17:43:01 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#pragma once
 
-int main()
+#include <iostream>
+
+class Fixed
 {
-	Zombie	*meh;
-
-	meh = ZombieHorde(2, "Bob");
-	delete[] meh;
-}
+private:
+	int	store_fixed;
+	static const int	fraction_store = 8;
+public:
+	Fixed();
+	Fixed(const Fixed &copy);
+	Fixed& operator=(const Fixed& other);
+	int getRawBits( void ) const;
+	void setRawBits( int const raw );
+	~Fixed();
+};

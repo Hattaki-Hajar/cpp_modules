@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:24:32 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/18 22:47:46 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:30:49 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int main(int ac, char **av)
 		std::getline(in_file, line, '\0');
 		if (!line.empty())
 			line2 = replace_content(line, search, replace);
-		out_file << line2 << std::endl;
+		out_file << line2;
 		in_file.close();
 	}
 }
