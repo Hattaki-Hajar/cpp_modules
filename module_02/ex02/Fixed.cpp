@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 23:11:26 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/22 13:50:18 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/22 23:06:03 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,14 @@ bool	Fixed::operator!=(const Fixed& other)
 // protect this!!!!!!!!!!
 Fixed Fixed::operator/(const Fixed& other)
 {
-	Fixed	last;
-	last.setRawBits((float)(this->getRawBits() / other.getRawBits()) / (1 << fraction_store));
+	Fixed	last(this->toFloat() / other.toFloat());
 	return last;
 }
 
 Fixed Fixed::operator+(const Fixed& other)
 {
-	Fixed	last(this->toFloat() / other.toFloat());
+	Fixed	last;
+	last.setRawBits(this->getRawBits() + other.getRawBits())
 	return last;
 }
 
