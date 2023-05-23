@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 23:11:26 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/22 23:06:03 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:59:03 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ bool	Fixed::operator!=(const Fixed& other)
 		return (true);
 	return (false);
 }
-// protect this!!!!!!!!!!
+
 Fixed Fixed::operator/(const Fixed& other)
 {
 	Fixed	last(this->toFloat() / other.toFloat());
@@ -96,7 +96,7 @@ Fixed Fixed::operator/(const Fixed& other)
 Fixed Fixed::operator+(const Fixed& other)
 {
 	Fixed	last;
-	last.setRawBits(this->getRawBits() + other.getRawBits())
+	last.setRawBits(this->getRawBits() + other.getRawBits());
 	return last;
 }
 
@@ -111,6 +111,12 @@ Fixed Fixed::operator-(const Fixed& other)
 	Fixed	last;
 	last.setRawBits(this->getRawBits() - other.getRawBits());
 	return last;
+}
+
+Fixed	Fixed::operator-()
+{
+	Fixed	rev(-1);
+	return (*this * rev);
 }
 
 Fixed&	Fixed::operator++()
@@ -188,6 +194,12 @@ int Fixed::getRawBits( void ) const
 void Fixed::setRawBits( int const raw )
 {
 	store_fixed = raw;
+}
+
+std::ostream& operator<<(std::ostream &os, const Fixed& point)
+{
+	os << point.toFloat();
+	return (os);
 }
 
 Fixed::~Fixed()

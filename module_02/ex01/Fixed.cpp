@@ -6,11 +6,12 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 18:02:13 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/21 23:17:35 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:43:27 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include <cmath>
 
 Fixed::Fixed()
 {
@@ -33,7 +34,7 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
 	std::cout << "Float constructor called" << std::endl;
-	store_fixed = value * (1 << fraction_store);
+	store_fixed = roundf(value * (1 << fraction_store));
 }
 
 Fixed& Fixed::operator=(const Fixed& other)

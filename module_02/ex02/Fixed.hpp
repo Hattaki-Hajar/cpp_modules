@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 23:13:47 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/22 13:51:40 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:58:36 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,18 @@ public:
 	bool	operator<=(const Fixed& other);
 	bool	operator==(const Fixed& other);
 	bool	operator!=(const Fixed& other);
+	
 	Fixed operator*(const Fixed& other);
 	Fixed operator+(const Fixed& other);
 	Fixed operator-(const Fixed& other);
+	Fixed operator-();
 	Fixed operator/(const Fixed& other);
+	
 	Fixed& operator++();
 	Fixed operator++(int);
 	Fixed& operator--();
 	Fixed operator--(int);
+	
 	static Fixed&	min(Fixed &one, Fixed &two);
 	static Fixed&	max(Fixed &one, Fixed &two);
 	static const Fixed&	min(const Fixed &one, const Fixed &two);
@@ -55,3 +59,5 @@ public:
 	
 	~Fixed();
 };
+
+std::ostream& operator<<(std::ostream &os, const Fixed& point);

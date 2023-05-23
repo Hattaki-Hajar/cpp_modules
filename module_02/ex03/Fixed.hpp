@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 13:54:40 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/22 21:19:45 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:54:24 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ public:
 	Fixed operator*(const Fixed& other);
 	Fixed operator+(const Fixed& other);
 	Fixed operator-(const Fixed& other);
+	Fixed operator-();
 	Fixed operator/(const Fixed& other);
 
 	Fixed& operator++();

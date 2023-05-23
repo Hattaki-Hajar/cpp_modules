@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 19:09:10 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/22 22:59:32 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:09:25 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ Fixed	getArea(Point const a, Point const b, Point const c)
 	div2 = b.getX() * (c.getY() - a.getY());
 	div3 = c.getX() * (a.getY() - b.getY());
 	Fixed rslt , zero(0);
-	rslt = rslt + div1;
-	rslt = rslt + div2;
-	rslt = rslt + div3;
+	rslt = div1 + div2 + div3;
 	
 	if (rslt < zero)
 		rslt = rslt * Fixed(-1);

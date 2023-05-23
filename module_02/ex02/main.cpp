@@ -6,17 +6,11 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:36:55 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/22 13:34:08 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:58:20 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-
-std::ostream& operator<<(std::ostream &os, const Fixed& point)
-{
-	os << point.toFloat();
-	return (os);
-}
 
 int main( void )
 {

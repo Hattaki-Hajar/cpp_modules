@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 19:44:34 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/22 22:48:31 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:11:53 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ int main()
     Point outsidePoint(4.0f, 4.0f);
 
     // Check if the insidePoint is inside the triangle
-    // std::cout << "A :" << a.getX() << ", " << a.getY() << std::endl
-	//  << "b :" << b.getX() << ", " << b.getY() << std::endl
-	//  << "c :" << c.getX() << ", " << c.getY() << std::endl;
     bool isInside = bsp(a, b, c, insidePoint);
     std::cout << "Point (" << insidePoint.getX().toFloat() 
         << ", " << insidePoint.getY().toFloat() 
@@ -39,7 +36,7 @@ int main()
          << ") is inside the triangle: " << isInside << std::endl;
 
     // Define a point on the edge of the triangle
-    Point edgePoint(4.0f, 1.0f);
+    Point edgePoint(2.0f, 1.0f);
 
     // Check if the edgePoint is inside the triangle
     isInside = bsp(a, b, c, edgePoint);
