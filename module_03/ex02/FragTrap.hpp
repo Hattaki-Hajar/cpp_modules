@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/21 17:51:21 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/25 20:25:58 by hhattaki         ###   ########.fr       */
+/*   Created: 2023/05/26 18:47:28 by hhattaki          #+#    #+#             */
+/*   Updated: 2023/05/26 21:19:00 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
+#include "ClapTrap.hpp"
 
-class Fixed
+class FragTrap : public ClapTrap
 {
-private:
-	int	store_fixed;
-	static const int	fraction_store = 8;
-
 public:
-	Fixed();
-	Fixed(const int value);
-	Fixed(const float value);
-	Fixed(const Fixed &copy);
-	
-	Fixed& operator=(const Fixed& other);
-	
-	float toFloat( void ) const;
-	int toInt( void ) const;
-	
-	int getRawBits( void ) const;
-	void setRawBits( int const raw );
-	
-	~Fixed();
-};
+	FragTrap();
+	FragTrap(std::string name);	
+	FragTrap(const FragTrap& copy);
+	FragTrap&	operator=(const FragTrap& other);
+	~FragTrap();
 
-std::ostream& operator<<(std::ostream &os, const Fixed& point);
+	void attack(const std::string& target);
+	void highFivesGuys();
+};

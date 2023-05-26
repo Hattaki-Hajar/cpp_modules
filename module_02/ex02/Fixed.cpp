@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 23:11:26 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/23 17:59:03 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:32:01 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ int Fixed::toInt( void ) const
 
 int Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 	return (store_fixed);
 }
 
