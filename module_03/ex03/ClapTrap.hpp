@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 15:03:00 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/28 15:58:34 by hhattaki         ###   ########.fr       */
+/*   Created: 2023/05/26 18:29:20 by hhattaki          #+#    #+#             */
+/*   Updated: 2023/05/26 19:14:36 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 class ClapTrap
 {
-private:
+protected:
 	std::string 	Name;
 	unsigned int	hit_points;
 	unsigned int	energy_points;

@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:55:24 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/05/26 20:52:30 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/05/27 15:59:52 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ ScavTrap::ScavTrap():ClapTrap()
 
 ScavTrap::ScavTrap(std::string name):ClapTrap(name)
 {
+	std::cout << "ScavTrap parametric constructor called." << std::endl;
 	hit_points = 100;
 	energy_points = 50;
 	attack_damage = 20;
-	std::cout << "ScavTrap constructor called." << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& copy)
