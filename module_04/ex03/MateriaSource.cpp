@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 15:42:50 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/06/01 22:07:42 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:07:19 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void MateriaSource::learnMateria(AMateria* materia)
 		}
 		i++;
 	}
+	if (materia)
+		delete materia;
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)

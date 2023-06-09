@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:36:41 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/06/01 22:29:29 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/06/09 21:09:56 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,32 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-	int i = 0;
-	while (i < 4 && m)
+	if (m)
 	{
-		if (!slots[i])
+		int i = 0;
+		while (i < 4 && m)
 		{
-			slots[i] = m->clone();
-			break ;
+			if (!slots[i])
+			{
+				slots[i] = m->clone();
+				break ;
+			}
+			i++;
 		}
-		i++;
 	}
+}
+
+AMateria	*Character::getMateria(int idx)
+{
+	if (idx >= 0 && idx < 4 && slots[idx])
+		return slots[idx];
+	return 0;
 }
 
 void Character::unequip(int idx)
 {
-	(void)idx;
-	// if (slots[idx])
+	if (idx >= 0 && idx < 4 && slots[idx])
+		slots[idx] = 0;
 }
 
 void Character::use(int idx, ICharacter& target)
