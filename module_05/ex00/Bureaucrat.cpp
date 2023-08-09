@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:47:36 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/04 21:35:58 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/09 15:51:07 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ Bureaucrat::Bureaucrat(void):name("Mjhol lhawiya")
 	grade = 150;
 }
 
-Bureaucrat::Bureaucrat(std::string Name, int grade):name(Name)
+Bureaucrat::Bureaucrat(std::string Name, int Grade):name(Name)
 {
 	std::cout << "Parameterized constructor called" << std::endl;
-	grade = grade;
+	if (Grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else if (Grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	grade = Grade;
 }
 
 const std::string&	Bureaucrat::getName(void)
@@ -32,4 +36,39 @@ const std::string&	Bureaucrat::getName(void)
 int	Bureaucrat::getGrade(void)
 {
 	return (grade);
+}
+
+Bureaucrat::~Bureaucrat(void)
+{
+	std::cout << "Destructor called" << std::endl;
+}
+
+void	Bureaucrat::increment_grade(void)
+{
+	if (grade <= 1)
+	{
+		throw Bureaucrat::GradeTooHighException();
+		return ;
+	}
+	this->grade--;
+}
+
+void	Bureaucrat::decrement_grade(void)
+{
+	if (grade >= 150)
+	{
+		throw Bureaucrat::GradeTooLowException();
+		return ;
+	}
+	this->grade++;
+}
+
+const char*Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Bureaucrat::GradeTooHighException");
+}
+
+const char*Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Bureaucrat::GradeTooLowException");
 }
