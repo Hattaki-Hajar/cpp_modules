@@ -6,13 +6,15 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:37:48 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/10 16:43:52 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/10 16:50:03 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+
+class	Form;
 
 class	Bureaucrat
 {
@@ -24,14 +26,16 @@ public:
 	Bureaucrat(void);
 	Bureaucrat(std::string Name, int Grade);
 	Bureaucrat(const Bureaucrat &copy);
-	Bureaucrat &operator=(const Bureaucrat &other);
+	Bureaucrat	&operator=(const Bureaucrat &other);
 	~Bureaucrat(void);
 	/* getters */
 	const std::string&	getName(void) const; 
 	int					getGrade(void) const;
-	/* additional funcs */
+	/* Additional func */
 	void	increment_grade(void);
 	void	decrement_grade(void);
+	void	signForm(Form &F);
+
 	class GradeTooHighException : public std::exception
 	{
 		public:
@@ -45,3 +49,5 @@ public:
 };
 
 std::ostream& operator<<(std::ostream &os, const Bureaucrat& B);
+
+#include "Form.hpp"
