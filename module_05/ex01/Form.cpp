@@ -6,13 +6,13 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:17:35 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/10 18:06:34 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/10 18:20:54 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(): name("shi wraq"),sign_grade(150),exec_grade(150)
+Form::Form(): name("7osn sira"),sign_grade(150),exec_grade(150)
 {
 	sign = false;
 	std::cout << "Default constructor called" << std::endl;

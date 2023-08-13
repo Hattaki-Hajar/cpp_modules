@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 14:34:58 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/10 18:05:55 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/10 18:24:28 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main()
 	try
 	{
 		Form	F("whatever", 5, 10);
-		Form	N("whatever", 5, 10);
+		Form	N;
 		Bureaucrat	B("jonas", 4);
 		
 		std::cout << B;		
@@ -30,7 +30,6 @@ int main()
 		B.decrement_grade();
 		B.signForm(N);
 		B.signForm(F);
-		// N.beSigned(B);
 	}
     catch(std::exception &exp)
 	{
