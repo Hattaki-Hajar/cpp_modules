@@ -27,6 +27,7 @@ public:
 	/* Canonical form */ ///////////
 	AForm();
 	AForm(std::string Name, int Sign, int exec);
+	virtual ~AForm();
 	/* Setters */
 	void	SetSign(bool b);
 	/* Getters */
@@ -35,7 +36,8 @@ public:
 	bool	GetSign(void) const;
 	const std::string &GetName() const;
 	/* Additional func */
-	virtual void execute(Bureaucrat const & executor) const;
+	void	beSigned(Bureaucrat &B);
+	virtual void execute(Bureaucrat const & executor) const = 0;
 	/* exception */
 	class not_signed: public std::exception
 	{

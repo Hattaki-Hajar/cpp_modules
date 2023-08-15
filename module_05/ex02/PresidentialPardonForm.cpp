@@ -25,6 +25,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string Target)
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &copy)
+:AForm("PresidentialPardonForm", 25, 5)
 {
 	(void)copy;
 }
@@ -38,6 +39,21 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(PresidentialPardonForm
 const std::string	&PresidentialPardonForm::getTarget(void) const
 {
 	return (target);
+}
+
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
+{
+	if (!GetSign())
+	{
+		throw AForm::not_signed();
+		return ;
+	}
+	if (executor.getGrade() > GetSignGrade() || executor.getGrade() > GetExecGrade())
+	{
+		throw Bureaucrat::GradeTooLowException();
+		return ;
+	}
+	std::cout << target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()

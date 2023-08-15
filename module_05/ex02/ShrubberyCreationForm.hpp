@@ -13,10 +13,11 @@
 #pragma once
 
 #include "AForm.hpp"
+#include <fstream>
 
 class	ShrubberyCreationForm: public AForm
 {
-	const	std::string	target;
+	std::string	target;
 public:
 	/* Canonical form */
 	ShrubberyCreationForm();
@@ -28,4 +29,5 @@ public:
 	const std::string	&getTarget(void) const;
 	/* Additional func */
 	void	execute(Bureaucrat const & executor) const;
+	
 };

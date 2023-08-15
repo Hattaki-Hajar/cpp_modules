@@ -17,6 +17,7 @@
 class	RobotomyRequestForm: public AForm
 {
 	const	std::string	target;
+	int		i;
 public:
 	/* Canonical form */
 	RobotomyRequestForm();
@@ -28,4 +29,5 @@ public:
 	const std::string	&getTarget(void) const;
 	/* Additional func */
 	void	execute(Bureaucrat const & executor) const;
+	void	increment(int *i);
 };

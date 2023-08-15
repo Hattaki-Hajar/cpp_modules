@@ -42,9 +42,24 @@ int	AForm::GetExecGrade(void) const
 	return (exec_grade);
 }
 
+const std::string &AForm::GetName() const
+{
+	return (name);
+}
+
 void	AForm::SetSign(bool b)
 {
 	sign = b;
+}
+
+void	AForm::beSigned(Bureaucrat &B)
+{
+	if (B.getGrade() > this->sign_grade)
+	{
+		throw Bureaucrat::GradeTooLowException();
+		return ;
+	}
+	this->sign = true;
 }
 
 AForm::~AForm()
