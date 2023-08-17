@@ -16,7 +16,7 @@
 
 class	PresidentialPardonForm: public AForm
 {
-	const	std::string	target;
+	std::string	target;
 public:
 	/* Canonical form */
 	PresidentialPardonForm();

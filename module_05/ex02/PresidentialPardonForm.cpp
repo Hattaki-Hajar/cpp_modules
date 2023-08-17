@@ -27,12 +27,12 @@ PresidentialPardonForm::PresidentialPardonForm(std::string Target)
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &copy)
 :AForm("PresidentialPardonForm", 25, 5)
 {
-	(void)copy;
+	target = copy.getTarget();
 }
 
 PresidentialPardonForm	&PresidentialPardonForm::operator=(PresidentialPardonForm &other)
 {
-	(void)other;
+	target = other.getTarget();
 	return (*this);
 }
 

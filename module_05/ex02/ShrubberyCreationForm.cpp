@@ -27,12 +27,12 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string Target)
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &copy)
 :AForm("ShrubberyCreationForm", 145, 137)
 {
-	(void)copy;
+	target = copy.target;
 }
 
 ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm &other)
 {
-	(void)other;
+	target = other.getTarget();
 	return (*this);
 }
 

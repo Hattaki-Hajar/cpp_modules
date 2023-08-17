@@ -16,25 +16,24 @@ RobotomyRequestForm::RobotomyRequestForm()
 :AForm("RobotomyRequestForm", 72, 45), target("home")
 {
 	SetSign(false);
-	i = 0;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string Target)
 :AForm("RobotomyRequestForm", 72, 45), target(Target)
 {
 	SetSign(false);
-	i = 0;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &copy)
 :AForm("RobotomyRequestForm", 72, 45)
 {
-	(void)copy;
+	// (void)copy;
+	target = copy.getTarget();
 }
 
 RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm &other)
 {
-	(void)other;
+	target = other.getTarget();
 	return (*this);
 }
 
@@ -58,6 +57,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 		return ;
 	}
 	std::cout << "*some drilling noise*" << std::endl;
+	int i = rand() % 2;
 	if (i % 2)
 		std::cout << target
 		<< " has been robotomized successfully." << std::endl;

@@ -16,8 +16,7 @@
 
 class	RobotomyRequestForm: public AForm
 {
-	const	std::string	target;
-	int		i;
+	std::string	target;
 public:
 	/* Canonical form */
 	RobotomyRequestForm();
