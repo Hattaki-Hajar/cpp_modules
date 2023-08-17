@@ -31,13 +31,14 @@ Bureaucrat::Bureaucrat(std::string Name, int Grade):name(Name)
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy): name(copy.getName())
 {
-	this->grade = copy.getGrade();
+	*this = copy;
 	std::cout << "copy constructor called" << std::endl;
 }
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &other)
 {
-	(void)other;
+	if (this != &other)
+		grade = other.getGrade();
 	return (*this);
 }
 

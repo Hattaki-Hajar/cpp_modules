@@ -24,9 +24,11 @@ class	AForm
 	const int			exec_grade;
 
 public:
-	/* Canonical form */ ///////////
+	/* Canonical form */
 	AForm();
 	AForm(std::string Name, int Sign, int exec);
+	AForm(const AForm &copy);
+	AForm &operator=(const AForm &other);
 	virtual ~AForm();
 	/* Setters */
 	void	SetSign(bool b);

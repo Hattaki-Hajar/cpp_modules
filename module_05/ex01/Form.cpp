@@ -28,7 +28,8 @@ Form::Form(std::string Name, int Sign, int exec): name(Name), sign_grade(Sign), 
 	std::cout << "Parameterized constructor called" << std::endl;
 }
 
-Form::Form(const Form &copy): name(copy.name), sign_grade(copy.sign_grade), exec_grade(copy.exec_grade)
+Form::Form(const Form &copy)
+:name(copy.name), sign_grade(copy.sign_grade), exec_grade(copy.exec_grade)
 {
 	this->sign = copy.sign;
 	std::cout << "Copy constructor called" << std::endl; 

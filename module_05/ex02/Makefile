@@ -1,6 +1,6 @@
 SRCS	= $(wildcard *.cpp)
 
-CC		= c++
+CC		= clang++
 
 CFLAGS	= -Werror -Wextra -Wall -std=c++98
 

@@ -22,6 +22,18 @@ AForm::AForm(std::string Name, int Sign, int exec): name(Name), sign_grade(Sign)
 	sign = false;
 }
 
+AForm::AForm(const AForm &copy)
+:name(copy.name), sign_grade(copy.sign_grade), exec_grade(copy.exec_grade)
+{
+	(void)copy;
+}
+
+AForm	&AForm::operator=(const AForm &other)
+{
+	(void)other;
+	return (*this);
+}
+
 const char *AForm::not_signed::what() const throw()
 {
 	return ("Form not signed");
