@@ -20,7 +20,7 @@ void	test2()
 {
 	RobotomyRequestForm form2;
 	RobotomyRequestForm form1(form2);
-	Bureaucrat Rick("Rick" , -1);
+	Bureaucrat Rick("Rick" , 1);
 	Bureaucrat Morty("Morty" , 130);
 	Bureaucrat Summer("Summer", 40);
 	std::cout << std::endl;
@@ -37,8 +37,8 @@ int main(void)
 {
 	try
 	{
-		test1();
-		std::cout << "***********test 1 done***********" << std::endl;
+		// test1();
+		// std::cout << "***********test 1 done***********" << std::endl;
 		test2();
 		std::cout << "***********test 2 done***********" << std::endl;
 	}

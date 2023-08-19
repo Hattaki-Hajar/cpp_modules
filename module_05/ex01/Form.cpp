@@ -18,7 +18,8 @@ Form::Form(): name("7osn sira"),sign_grade(150),exec_grade(150)
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Form::Form(std::string Name, int Sign, int exec): name(Name), sign_grade(Sign), exec_grade(exec)
+Form::Form(std::string Name, int Sign, int exec)
+:name(Name), sign_grade(Sign), exec_grade(exec)
 {
 	if (Sign < 1 || exec < 1)
 		throw Bureaucrat::GradeTooHighException();
@@ -31,13 +32,13 @@ Form::Form(std::string Name, int Sign, int exec): name(Name), sign_grade(Sign), 
 Form::Form(const Form &copy)
 :name(copy.name), sign_grade(copy.sign_grade), exec_grade(copy.exec_grade)
 {
-	this->sign = copy.sign;
+	*this = copy;
 	std::cout << "Copy constructor called" << std::endl; 
 }
 
 Form &Form::operator=(const Form &other)
 {
-	(void)other;
+	sign = copy.sign;
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 15:57:46 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/13 13:44:29 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/19 15:22:52 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 		return ;
 	}
 	std::cout << "*some drilling noise*" << std::endl;
-	int i = rand() % 2;
+	std::srand(time(0));
+	int i = rand();
 	if (i % 2)
 		std::cout << target
 		<< " has been robotomized successfully." << std::endl;
