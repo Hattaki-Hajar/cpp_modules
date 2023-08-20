@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:47:36 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/10 16:45:40 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/20 14:23:24 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	Bureaucrat::signForm(Form &F)
 	if (this->grade > F.GetSignGrade())
 	{
 		std::cout << name << " couldn't sign " << F.GetName()
-		<< " because the grade is too low" << std::endl;
+		<< " because their grade is too low" << std::endl;
 		return ;
 	}
 	F.beSigned(*this);

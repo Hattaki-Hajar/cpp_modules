@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 15:57:46 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/19 15:22:02 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/20 14:41:07 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ RobotomyRequestForm::RobotomyRequestForm(std::string Target)
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &copy)
 :AForm("RobotomyRequestForm", 72, 45)
 {
-	// (void)copy;
 	target = copy.getTarget();
 }
 

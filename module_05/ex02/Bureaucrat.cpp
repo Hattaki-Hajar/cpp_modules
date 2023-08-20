@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:47:36 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/13 16:13:35 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/20 14:26:44 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	Bureaucrat::signForm(AForm &F)
 	std::cout << name << " signed " << F.GetName() << std::endl;
 }
 
-void	Bureaucrat::execute(AForm const & form)
+void	Bureaucrat::executeForm(AForm const & form)
 {
 	if (grade > form.GetExecGrade())
 	{

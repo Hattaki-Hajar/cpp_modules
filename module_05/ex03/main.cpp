@@ -4,7 +4,7 @@
 void test1()
 {
 	Intern	mjhol;
-	AForm *form1 = (mjhol.makeform("Shrubbery Creation", "home"));
+	AForm *form1 = (mjhol.makeForm("Shrubbery Creation", "home"));
 	if (!form1)
 		return ;
 	Bureaucrat Bob("Bob" , 130);
@@ -12,15 +12,15 @@ void test1()
 	std::cout << std::endl;
 	Bob.signForm(*form1);
 	Akira.signForm(*form1);
-	Akira.execute(*form1);
-	Bob.execute(*form1);
+	Akira.executeForm(*form1);
+	Bob.executeForm(*form1);
 	std::cout << std::endl;
 }
 
 void	test2()
 {
 	Intern	mjhol;
-	AForm *form1 = (mjhol.makeform("Robotomy Request", "home"));
+	AForm *form1 = (mjhol.makeForm("Robotomy Request", "home"));
 	if (!form1)
 		return ;
 	Bureaucrat Rick("Rick" , 1);
@@ -29,8 +29,8 @@ void	test2()
 	std::cout << std::endl;
 	Morty.signForm(*form1);
 	Rick.signForm(*form1);
-	Morty.execute(*form1);
-	Rick.execute(*form1);
+	Morty.executeForm(*form1);
+	Rick.executeForm(*form1);
 	Summer.signForm(*form1);
 	std::cout << std::endl;
 }

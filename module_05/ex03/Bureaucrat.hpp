@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:37:48 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/13 16:17:13 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/20 14:29:20 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ public:
 	void	increment_grade(void);
 	void	decrement_grade(void);
 	void	signForm(AForm &F);
-	void	execute(AForm const & form);
+	void	executeForm(AForm const & form);
 
 	class GradeTooHighException : public std::exception
 	{

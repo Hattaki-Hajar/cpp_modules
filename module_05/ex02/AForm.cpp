@@ -6,18 +6,20 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:57:32 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/13 14:59:34 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/20 14:39:50 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
-AForm::AForm():name("hosn sira"), sign_grade(150), exec_grade(150)
+AForm::AForm()
+:name("hosn sira"), sign_grade(150), exec_grade(150)
 {
 	sign = false;
 }
 
-AForm::AForm(std::string Name, int Sign, int exec): name(Name), sign_grade(Sign), exec_grade(exec)
+AForm::AForm(std::string Name, int Sign, int exec)
+:name(Name), sign_grade(Sign), exec_grade(exec)
 {
 	sign = false;
 }

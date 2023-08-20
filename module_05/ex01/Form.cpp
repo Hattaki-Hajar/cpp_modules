@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:17:35 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/10 18:20:54 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/20 14:21:11 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Form::Form(const Form &copy)
 
 Form &Form::operator=(const Form &other)
 {
-	sign = copy.sign;
+	sign = other.sign;
 	return (*this);
 }
 

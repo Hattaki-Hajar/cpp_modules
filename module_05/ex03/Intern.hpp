@@ -14,5 +14,5 @@ public:
     Intern &operator=(const Intern &other);
     ~Intern();
     /* Additional func */
-    AForm *makeform(std::string name, std::string target);
+    AForm *makeForm(std::string name, std::string target);
 };
