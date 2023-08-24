@@ -6,13 +6,14 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:47:43 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/13 16:14:55 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:02:12 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <exception>
 
 class Bureaucrat;
 
@@ -46,16 +47,6 @@ public:
 		public:
 			virtual const char *what() const throw(); 
 	};
-// 	Form(const Form &copy);
-// 	Form &operator=(const Form &other);
-// 	~Form();
-// 	/* getters */
-// 	const std::string	&GetName() const;
-// 	bool				GetSign() const;
-// 	int					GetSignGrade() const;
-// 	int					GetExecGrade() const;
-// 	/* additional funcs */
-// 	void	beSigned(Bureaucrat &B);
 };
 
 std::ostream& operator<<(std::ostream &os, const AForm& F);

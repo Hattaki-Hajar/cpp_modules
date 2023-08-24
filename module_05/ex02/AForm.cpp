@@ -6,7 +6,7 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:57:32 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/20 14:39:50 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/21 11:52:57 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	AForm::beSigned(Bureaucrat &B)
 {
 	if (B.getGrade() > this->sign_grade)
 	{
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 		return ;
 	}
 	this->sign = true;

@@ -6,13 +6,14 @@
 /*   By: hhattaki <hhattaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:37:48 by hhattaki          #+#    #+#             */
-/*   Updated: 2023/08/20 13:10:39 by hhattaki         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:00:46 by hhattaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <exception>
 
 class	Bureaucrat
 {
