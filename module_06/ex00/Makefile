@@ -2,9 +2,9 @@ SRCS	= $(wildcard *.cpp)
 
 CC		= c++
 
-CFLAGS	= -Werror -Wextra -Wall -std=c++98
+CFLAGS	= -Werror -Wextra -Wall -std=c++98 -g3
 
-NAME	= Convertor
+NAME	= Converter
 
 OBJS	= $(SRCS:.cpp=.o)
 

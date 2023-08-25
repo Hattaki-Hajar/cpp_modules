@@ -1,7 +1,13 @@
 #pragma once
 
 #include <iostream>
+#include <stdlib.h>
+#include <cmath>
 
+# define INT 1
+# define FLOAT 2
+# define DOUBLE 3
+# define CHAR 0
 class ScalarConverter
 {
 	static int		i;
@@ -11,6 +17,7 @@ class ScalarConverter
 	static std::string	str;
 
 public:
+	static int		type;
 	/*  Canonical form  */
 	ScalarConverter();
 	ScalarConverter(char *s);
@@ -21,8 +28,12 @@ public:
 	// void	SetStr(std::string &s);
 	/*  Additional  */
 	static void	convert(std::string str);
-	int	parser(void);
+	static int	parser(void);
+	static void	from_char(void);
+	static void	from_int(void);
+	static void	from_float(void);
+	static void	from_double(void);
 	/*  Converters  */
 };
 
-int	isalldigit(std::string &s);
+int	isalldigit(const std::string &s);
