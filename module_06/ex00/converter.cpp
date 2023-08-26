@@ -38,8 +38,11 @@ int	ScalarConverter::parser(void)
 		|| str == "+inf" || str == "-inf")
 	{
 		type = DOUBLE;
-		if (str.find(".") == std::string::npos)
-			type = INT;
+		if (str != "nan" && str != "-inf" && str != "+inf")
+		{
+			if (str.find(".") == std::string::npos)
+				type = INT;
+		}
 	}
 	else if (isalldigit(str) == 3)
 		type = CHAR;
