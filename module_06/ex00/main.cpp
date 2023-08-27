@@ -8,7 +8,7 @@ int main(int ac, char *av[])
 		if (!c.parser())
 		{
 			std::cout << "Wrong argument" << std::endl;
-			// return -1;
+			return -1;
 		}
 		// std::cout << ScalarConverter::type << std::endl;
 		c.convert(av[1]);

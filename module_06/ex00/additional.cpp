@@ -9,7 +9,8 @@ int	isalldigit(const std::string &s)
 		return (3);
 	while (i < s.length())
 	{
-		if ((!isdigit(s[i]) && s[0] != '+' && s[0] != '-') && s[i] != '.')
+		if (!(isdigit(s[i]) || (!i && (s[i] == '+' || s[i] == '-'))
+			|| (i && s[i] == '.')))
 		{
 			if (i == s.length() - 1 && s[i] == 'f')
 			{
@@ -30,10 +31,10 @@ void	ScalarConverter::from_char(void)
 	i = static_cast<int>(c);
 	f = static_cast<float>(c);
 	d = static_cast<double>(c);
-	std::cout << "char: " << c << std::endl;
-	std::cout << "int: " << i << std::endl;
-	std::cout << "float: " << f << ".0f" << std::endl;
-	std::cout << "double: " << d << ".0" << std::endl;
+	print_char();
+	print_int();
+	print_float();
+	print_double();
 }
 
 void	ScalarConverter::from_int(void)
@@ -41,14 +42,10 @@ void	ScalarConverter::from_int(void)
 	c = static_cast<char>(i);
 	f = static_cast<float>(i);
 	d = static_cast<double>(i);
-	std::cout << "char: ";
-	if (!isprint(c))
-		std::cout << "Non displayable" << std::endl;
-	else
-		std::cout << c << std::endl;
-	std::cout << "int: " << i << std::endl;
-	std::cout << "float: " << f << ".0f" << std::endl;
-	std::cout << "double: " << d << ".0" << std::endl;
+	print_char();
+	print_int();
+	print_float();
+	print_double();
 }
 
 void	ScalarConverter::from_float(void)
@@ -66,18 +63,11 @@ void	ScalarConverter::from_float(void)
 		std::cout << "char: impossible\nint: impossible" << std::endl;
 	else
 	{
-		std::cout << "char: ";
-		if (!isprint(c))
-			std::cout << "Non displayable" << std::endl;
-		else
-			std::cout << c << std::endl;
-		if (f > INT_MAX || f < INT_MIN)
-			std::cout << "int: impossible" << std::endl;
-		else
-			std::cout << "int: " << i << std::endl;
+		print_char();
+		print_int();
 	}
-	std::cout << "float: " << f << "f" << std::endl;
-	std::cout << "double: " << d << std::endl;
+	print_float();
+	print_double();
 }
 
 void	ScalarConverter::from_double(void)
@@ -95,13 +85,9 @@ void	ScalarConverter::from_double(void)
 		std::cout << "char: impossible\nint: impossible" << std::endl;
 	else
 	{
-		std::cout << "char: ";
-		if (!isprint(c))
-			std::cout << "Non displayable" << std::endl;
-		else
-			std::cout << c << std::endl;
-		std::cout << "int: " << i << std::endl;
+		print_char();
+		print_int();
 	}
-	std::cout << "float: " << f << "f" << std::endl;
-	std::cout << "double: " << d << std::endl;
+	print_float();
+	print_double();
 }

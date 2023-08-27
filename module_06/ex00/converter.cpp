@@ -6,6 +6,7 @@ int	ScalarConverter::i = 0;
 float	ScalarConverter::f = 0;
 double	ScalarConverter::d = 0;
 char	ScalarConverter::c = 0;
+long double	ScalarConverter::store = 0;
 
 ScalarConverter::ScalarConverter()
 {
@@ -53,24 +54,25 @@ int	ScalarConverter::parser(void)
 
 void	ScalarConverter::convert(std::string str)
 {
+	store = strtold(str.c_str(), 0);
 	if (type == CHAR)
 	{
 		c = str[0];
 		from_char();
 	}
-	if (type == INT)
+	else if (type == INT)
 	{
 		i = atoi(str.c_str());
 		from_int();
 	}
-	if (type == FLOAT)
+	else if (type == FLOAT)
 	{
-		f = atof(str.c_str());
+		f = std::strtof(str.c_str(), 0);
 		from_float();
 	}
-	if (type == DOUBLE)
+	else if (type == DOUBLE)
 	{
-		d = atof(str.c_str());
+		d = std::strtod(str.c_str(), 0);
 		from_double();
 	}
 }
