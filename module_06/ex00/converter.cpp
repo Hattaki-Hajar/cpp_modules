@@ -67,7 +67,9 @@ void	ScalarConverter::convert(std::string str)
 	}
 	else if (type == FLOAT)
 	{
+		// std::cout << "str: " << str.c_str() << std::endl;
 		f = std::strtof(str.c_str(), 0);
+		// std::cout << std::fixed << "float: " << f << std::endl;
 		from_float();
 	}
 	else if (type == DOUBLE)

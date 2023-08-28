@@ -1,11 +1,12 @@
 #include "converter.hpp"
-#include <limits>
 #include <limits.h>
+#include <cfloat>
 
 void	ScalarConverter::print_char(void)
 {
-	if (store > CHAR_MAX
-		|| store < CHAR_MIN)
+	if (store > CHAR_MAX || store < CHAR_MIN
+		|| str.find("nan") != std::string::npos
+		|| str.find("inf") != std::string::npos)
 		std::cout << "char: impossible" << std::endl;
 	else if (!isprint(c))
 		std::cout << "char: Non displayable" << std::endl;
@@ -15,8 +16,9 @@ void	ScalarConverter::print_char(void)
 
 void	ScalarConverter::print_int(void)
 {
-	if (store > INT_MAX
-		|| store < INT_MIN)
+	if (store > INT_MAX || store < INT_MIN
+		|| str.find("nan") != std::string::npos
+		|| str.find("inf") != std::string::npos)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << i << std::endl;
@@ -24,18 +26,18 @@ void	ScalarConverter::print_int(void)
 
 void	ScalarConverter::print_float(void)
 {
-	if (store > __FLT_MAX__
-		|| store < __FLT_MIN__)
+	if (store > FLT_MAX
+		|| store < -FLT_MAX)
 		std::cout << "float: impossible" << std::endl;
 	else
-		std::cout << "float: " << i << std::endl;
+		std::cout << "float: " << f << std::endl;
 }
 
 void	ScalarConverter::print_double(void)
 {
-	if (store > __DBL_MAX__
-		|| store < __DBL_MIN__)
+	if (store > DBL_MAX
+		|| store < -DBL_MAX)
 		std::cout << "double: impossible" << std::endl;
 	else
-		std::cout << "double: " << i << std::endl;
+		std::cout << "double: " << d << std::endl;
 }
