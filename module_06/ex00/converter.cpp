@@ -12,10 +12,10 @@ ScalarConverter::ScalarConverter()
 {
 }
 
-ScalarConverter::ScalarConverter(char *s)
-{
-	str = s;
-}
+// ScalarConverter::ScalarConverter(char *s)
+// {
+// 	str = s;
+// }
 
 ScalarConverter::ScalarConverter(const ScalarConverter &copy)
 {
@@ -28,7 +28,7 @@ ScalarConverter	ScalarConverter::operator=(const ScalarConverter &other)
 	return *this;
 }
 
-int	ScalarConverter::parser(void)
+int	ScalarConverter::parser(std::string const &str)
 {
 	int i = 1;
 
@@ -52,7 +52,7 @@ int	ScalarConverter::parser(void)
 	return i;
 }
 
-void	ScalarConverter::convert(std::string str)
+void	ScalarConverter::convert(std::string const &str)
 {
 	store = strtold(str.c_str(), 0);
 	if (type == CHAR)

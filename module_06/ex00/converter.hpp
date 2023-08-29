@@ -16,20 +16,19 @@ class ScalarConverter
 	static char		c;
 	static long double	store;
 	static std::string	str;
-
-public:
 	static int		type;
-	/*  Canonical form  */
 	ScalarConverter();
-	ScalarConverter(char *s);
 	ScalarConverter(const ScalarConverter &copy);
 	ScalarConverter	operator=(const ScalarConverter &other);
+
+public:
+	/*  Canonical form  */
 	~ScalarConverter();
 	/*  Setter  */
 	// void	SetStr(std::string &s);
 	/*  Additional  */
-	static void	convert(std::string str);
-	static int	parser(void);
+	static void	convert(std::string const &str);
+	static int	parser(std::string const &str);
 	static void	from_char(void);
 	static void	from_int(void);
 	static void	from_float(void);

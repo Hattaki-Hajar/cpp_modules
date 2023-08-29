@@ -34,7 +34,9 @@ void	ScalarConverter::from_char(void)
 	print_char();
 	print_int();
 	print_float();
+	std::cout << ".0f" << std::endl;
 	print_double();
+	std::cout << ".0" << std::endl;
 }
 
 void	ScalarConverter::from_int(void)
@@ -45,7 +47,9 @@ void	ScalarConverter::from_int(void)
 	print_char();
 	print_int();
 	print_float();
+	std::cout << ".0f" << std::endl;
 	print_double();
+	std::cout << ".0" << std::endl;
 }
 
 void	ScalarConverter::from_float(void)
@@ -67,7 +71,9 @@ void	ScalarConverter::from_float(void)
 		print_int();
 	}
 	print_float();
+	std::cout << "f" << std::endl;
 	print_double();
+	std::cout << std::endl;
 }
 
 void	ScalarConverter::from_double(void)
@@ -89,5 +95,7 @@ void	ScalarConverter::from_double(void)
 		print_int();
 	}
 	print_float();
+	std::cout << "f" << std::endl;
 	print_double();
+	std::cout << std::endl;
 }

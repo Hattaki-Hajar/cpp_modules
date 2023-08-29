@@ -30,7 +30,7 @@ void	ScalarConverter::print_float(void)
 		|| store < -FLT_MAX)
 		std::cout << "float: impossible" << std::endl;
 	else
-		std::cout << "float: " << f << std::endl;
+		std::cout << "float: " << f;
 }
 
 void	ScalarConverter::print_double(void)
@@ -39,5 +39,5 @@ void	ScalarConverter::print_double(void)
 		|| store < -DBL_MAX)
 		std::cout << "double: impossible" << std::endl;
 	else
-		std::cout << "double: " << d << std::endl;
+		std::cout << "double: " << d;
 }
