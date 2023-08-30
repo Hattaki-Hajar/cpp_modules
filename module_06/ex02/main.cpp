@@ -12,4 +12,6 @@ int main()
 	identify(*base);
 	std::cout << std::endl;
 	identify(*b2);
+	delete base;
+	delete b2;
 }
