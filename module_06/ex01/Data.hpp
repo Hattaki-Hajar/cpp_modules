@@ -2,13 +2,8 @@
 
 #include <iostream>
 
-class Data
+typedef struct Data
 {
-public:
 	int		i;
 	float	f;
-	Data();
-	Data(Data const &copy);
-	Data &operator=(Data const &other);
-	~Data();
-};
+} Data;

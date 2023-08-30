@@ -2,11 +2,13 @@ SRCS	= $(wildcard *.cpp)
 
 CC		= g++
 
-CFLAGS	= -Werror -Wextra -Wall #-std=c++98
+CFLAGS	= -Werror -Wextra -Wall -std=c++98
 
-NAME	= Converter
+NAME	= Identifier
 
 OBJS	= $(SRCS:.cpp=.o)
+
+MK_FILE	= Makefile
 
 HEADERS	= $(wildcard *.hpp)
 
