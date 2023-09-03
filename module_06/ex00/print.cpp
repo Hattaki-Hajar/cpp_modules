@@ -26,8 +26,8 @@ void	ScalarConverter::print_int(void)
 
 void	ScalarConverter::print_float(void)
 {
-	if (store > FLT_MAX
-		|| store < -FLT_MAX)
+	if ((store > FLT_MAX
+		|| store < -FLT_MAX) && f != INFINITY && f != -INFINITY && f != NAN)
 		std::cout << "float: impossible" << std::endl;
 	else
 		std::cout << "float: " << f;
@@ -35,8 +35,8 @@ void	ScalarConverter::print_float(void)
 
 void	ScalarConverter::print_double(void)
 {
-	if (store > DBL_MAX
-		|| store < -DBL_MAX)
+	if ((store > DBL_MAX
+		|| store < -DBL_MAX) && d != INFINITY && d != -INFINITY && d != NAN)
 		std::cout << "double: impossible" << std::endl;
 	else
 		std::cout << "double: " << d;

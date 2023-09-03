@@ -24,8 +24,6 @@ class ScalarConverter
 public:
 	/*  Canonical form  */
 	~ScalarConverter();
-	/*  Setter  */
-	// void	SetStr(std::string &s);
 	/*  Additional  */
 	static void	convert(std::string const &str);
 	static int	parser(std::string const &str);
@@ -37,7 +35,6 @@ public:
 	static void	print_int(void);
 	static void	print_float(void);
 	static void	print_double(void);
-	/*  Converters  */
 };
 
 int	isalldigit(const std::string &s);

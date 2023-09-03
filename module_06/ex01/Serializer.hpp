@@ -7,9 +7,9 @@ class Serializer
 {
 	Serializer();
 	Serializer(Serializer const &d);
+	Serializer &operator=(Serializer const &d);
 public:
 	/*  Canonical form  */
-	Serializer &operator=(Serializer const &d);
 	~Serializer();
 	/*  Additional funcs  */
 	static uintptr_t serialize(Data* ptr);

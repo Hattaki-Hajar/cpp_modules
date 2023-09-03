@@ -59,11 +59,11 @@ void	ScalarConverter::from_float(void)
 	if (str == "+inff")
 		f = INFINITY;
 	if (str == "-inff")
-		f = INFINITY * -1;	
+		f = INFINITY * -1;
 	c = static_cast<char>(f);
 	i = static_cast<int>(f);
 	d = static_cast<double>(f);
-	if (f == NAN || f == INFINITY || f == INFINITY * -1)
+	if (std::isnan(f) || f == INFINITY || f == INFINITY * -1)
 		std::cout << "char: impossible\nint: impossible" << std::endl;
 	else
 	{
@@ -87,7 +87,7 @@ void	ScalarConverter::from_double(void)
 	c = static_cast<char>(d);
 	i = static_cast<int>(d);
 	f = static_cast<float>(d);
-	if (d == NAN || d == INFINITY || d == INFINITY * -1)
+	if (std::isnan(d) || d == INFINITY || d == -INFINITY)
 		std::cout << "char: impossible\nint: impossible" << std::endl;
 	else
 	{
