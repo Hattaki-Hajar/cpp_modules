@@ -19,6 +19,7 @@ int main()
 
 	const Array<char> str(arr);
 	size = str.size();
+	str[0] = 32;
 	std::cout << "str size= " << str.size() << std::endl;
 	std::cout << "str: ";
 	for (unsigned int i = 0; i < size; i++)
