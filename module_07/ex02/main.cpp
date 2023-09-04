@@ -2,7 +2,7 @@
 
 int main()
 {
-	const Array<int> arr(5);
+	Array<int> arr(5);
 	unsigned int size = arr.size();
 
 	for (unsigned int i = 0; i < size; i++)
@@ -17,7 +17,7 @@ int main()
 	}
 	std::cout << std::endl;
 
-	Array<char> str(arr);
+	const Array<char> str(arr);
 	size = str.size();
 	std::cout << "str size= " << str.size() << std::endl;
 	std::cout << "str: ";
@@ -26,4 +26,12 @@ int main()
 		std::cout << str[i];
 	}
 	std::cout << std::endl;
+	try
+	{
+		arr[10] = 5;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }

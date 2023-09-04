@@ -88,7 +88,14 @@ public:
 	{
 		return (this->Size);
 	}
-	T &operator[](unsigned int i) const
+	T &operator[](unsigned int i)
+	{
+		if (i >= this->Size)
+			throw Array::bad_index();
+		else
+			return arr[i];
+	}
+	const T &operator[](unsigned int i) const
 	{
 		if (i >= this->Size)
 			throw Array::bad_index();
