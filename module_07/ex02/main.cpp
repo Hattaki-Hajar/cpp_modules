@@ -15,11 +15,14 @@ int main()
 	{
 		std::cout << arr[i] << ". ";
 	}
-	std::cout << std::endl;
+	std::cout << std::endl << "---------------" << std::endl;;
+
+	Array<float> f;
+	std::cout << "f size= " << f.size() << std::endl;
+	std::cout << "-----------------" << std::endl;
 
 	const Array<char> str(arr);
 	size = str.size();
-	str[0] = 32;
 	std::cout << "str size= " << str.size() << std::endl;
 	std::cout << "str: ";
 	for (unsigned int i = 0; i < size; i++)
@@ -27,6 +30,7 @@ int main()
 		std::cout << str[i];
 	}
 	std::cout << std::endl;
+	std::cout << "-----------------" << std::endl;
 	try
 	{
 		arr[10] = 5;
