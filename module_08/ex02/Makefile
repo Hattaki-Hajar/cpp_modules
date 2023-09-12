@@ -2,9 +2,9 @@ SRCS	= $(wildcard *.cpp)
 
 CC		= c++
 
-CFLAGS	= -Werror -Wextra -Wall -std=c++98 -g3
+CFLAGS	= -Werror -Wextra -Wall -std=c++98 -fsanitize=address -g3
 
-NAME	= Find
+NAME	= Stack
 
 OBJS	= $(SRCS:.cpp=.o)
 
