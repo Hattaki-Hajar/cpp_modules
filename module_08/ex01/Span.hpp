@@ -27,7 +27,7 @@ public:
 	{
 		unsigned int size = std::distance(start, end);
 
-		if (size < store.size() + N)
+		if (size > N - store.size())
 			throw std::runtime_error("Range too big!");
 		while (start < end)
 		{

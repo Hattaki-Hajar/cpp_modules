@@ -43,6 +43,26 @@ void	func2(void)
 	std::cout << "size: " << istack.size() << std::endl;
 	istack.pop();
 	std::cout << "after poping one element" << std::endl;
+	std::cout << "size: " << istack.size() << std::endl << std::endl;
+}
+
+void	func3(void)
+{
+	MutantStack<char> istack;
+
+	for (int i = 0; i < 10; i++)
+		istack.push(i + 97);
+	MutantStack<char>::iterator iter_s = istack.begin();
+	MutantStack<char>::iterator iter_e = istack.end();
+	while (iter_s != iter_e)
+	{
+		std::cout << *iter_s << ". ";
+		iter_s++;
+	}
+	std::cout << std::endl;
+	std::cout << "size: " << istack.size() << std::endl;
+	istack.pop();
+	std::cout << "after poping one element" << std::endl;
 	std::cout << "size: " << istack.size() << std::endl;
 }
 
@@ -52,4 +72,6 @@ int main()
 	func1();
 	std::cout << "****** test2 ******" << std::endl;
 	func2();
+	std::cout << "****** test3 ******" << std::endl;
+	func3();
 }
