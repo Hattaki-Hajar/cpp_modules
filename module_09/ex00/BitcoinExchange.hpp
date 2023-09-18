@@ -18,6 +18,7 @@ typedef struct Bitcoin
 	long	month;
 	long	day;
 	int		valid;
+	double	value;
 	std::string date;
 } Bitcoin;
 

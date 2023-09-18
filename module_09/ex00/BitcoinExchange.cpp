@@ -37,11 +37,15 @@ int	Btc::file_parser(const char *name)
 		if (!no_alpha(line, DATE))
 			store[j].valid = INVALID;
 		store[j].month = atol(line.c_str());
+		if (store[j].month < 9 && line[0] != '0')
+			line = "0" + line;
 		store[j].date += line + "-";
 		getline(in_file, line, ' ');
 		if (!no_alpha(line, DATE))
 			store[j].valid = INVALID;
 		store[j].day = atol(line.c_str());
+		if (store[j].day < 9 && line[0] != '0')
+			line = "0" + line;
 		store[j].date += line;
 		getline(in_file, line);
 		i = 0;
@@ -51,12 +55,8 @@ int	Btc::file_parser(const char *name)
 				break;
 			i++;
 		}
-		if ((line[i] != '|' || !isspace(line[i + 1])) && line[i])
-		{
-			std::cout << "Error: invalid character" << std::endl;
+		if ((line[i] != '|' || !isspace(line[i + 1])))
 			store[j].valid = INVALID;
-			return -1;
-		}
 		while (++i < line.length())
 		{
 			if (!isspace(line[i]))
@@ -144,6 +144,21 @@ void	Btc::exchange_bitcoins(void)
 		{
 			std::cerr << "Error: bad input3 => " << it->second.date << std::endl;
 			continue ;
+		}
+		std::map<std::string, double>::iterator iter = DB.begin();
+		while (++iter != DB.end())
+		{
+			std::map<std::string, double>::iterator i = iter;
+			i++;
+			if (it->second.date == iter->first || it->second.date < i->first)
+			{
+				// std::cout << it->second.date << " * " << iter->first << std::endl;
+				// std::cout << it->second.date << " * " << i->first << std::endl;
+				it->second.value = it->second.elements_nb * iter->second;
+				std::cout << it->second.date << " => " << it->second.elements_nb
+				<< " = " << it->second.value << std::endl;
+				break;
+			}
 		}
 	}
 }
