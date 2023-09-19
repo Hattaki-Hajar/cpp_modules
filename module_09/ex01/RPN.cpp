@@ -29,9 +29,9 @@ double	RPN::division(double one, double two)
 
 void	RPN::do_op(const std::string& op)
 {
-	std::cout << "f do-op " << store.size() << std::endl;
+	// std::cout << "f do-op *" << op[0] << std::endl;
 	if (store.size() < 2)
-		throw std::runtime_error("Error 8");
+		throw std::runtime_error("Error");
 	double one = store.top();
 	store.pop();
 	double two = store.top();
@@ -52,44 +52,46 @@ int	check_nb(const std::string &s)
 	unsigned int i = 0;
 	if (!isdigit(s[0]) && s[0] != '+' && s[0] != '-'
 		&& s[0] != '*' && s[0] != '/')
-		throw std::runtime_error("Error1");
-	if ((s[0] == '*' || s[0] == '/') && s[1])
-		throw std::runtime_error("Error2");
-	if (!s[1] && (s[0] == '+' ||
+		throw std::runtime_error("Error");
+	if ((s[0] == '*' || s[0] == '/') && s.size() != 1)
+		throw std::runtime_error("Error");
+	if (s.size() == 1 && (s[0] == '+' ||
 		s[0] == '*' || s[0] == '-' || s[0] == '/'))
 		return 2 ;
 	while (++i < s.size())
 	{
 		if (!isdigit(s[i]))
-			throw std::runtime_error("Error3");
+			throw std::runtime_error("Error");
 	}
 	return 1;
 }
 
 void	RPN::fill_stack(const char *str)
 {
-	std::string nb;
+	std::string nb = "";
 	std::string	s = str;
 	long		n;
-	unsigned int i = 0, j;
+	unsigned int i = 0;
 
-	while (s[i])
+	while (i < s.size())
 	{
-		j = 0;
-		while (s[i] && s[i] != ' ')
+		while (i < s.size() && s[i] != ' ')
 		{
-			nb[j] = s[i];
+			nb.append(s.substr(i, 1));
 			i++;
-			j++;
 		}
+		if (!nb.size())
+			return ;
 		if (check_nb(nb) == 2)
 			do_op(nb);
 		else
 		{
 			n = atof(nb.c_str());
 			if (n > 9)
-				throw std::runtime_error("Error0");
+				throw std::runtime_error("Error");
+			store.push(n);
 		}
+		nb.clear();
 		i++;
 	}
 }
