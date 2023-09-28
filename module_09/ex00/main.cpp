@@ -31,8 +31,6 @@ int main(int ac, char *av[])
 		std::cerr << "Error: could not open file." << std::endl;
 		return -1;
 	}
-	if (m.file_parser(av[1]))
-		return -1;
 	m.DB_parser();
-	m.exchange_bitcoins();
+	m.file_parser(av[1]);
 }

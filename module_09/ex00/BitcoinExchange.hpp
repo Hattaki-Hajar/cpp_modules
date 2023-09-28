@@ -10,6 +10,7 @@
 #define NB 1
 #define VALID 1
 #define INVALID 0
+#define NL 2
 
 typedef struct Bitcoin
 {
@@ -25,7 +26,6 @@ typedef struct Bitcoin
 class Btc
 {
 	std::ifstream in_file;
-	std::map<int, Bitcoin> store;
 	std::map<std::string, double> DB;
 public:
 	/*  Canonical form  */
@@ -34,9 +34,10 @@ public:
 	Btc &operator=(const Btc &other);
 	~Btc();
 	/*  Additional func  */
-	int		file_parser(const char *name);
+	void	file_parser(const char *name);
+	std::string	check_store_date(Bitcoin &store);
 	void	DB_parser(void);
-	void	exchange_bitcoins(void);
+	void	exchange_bitcoins(Bitcoin &store);
 };
 
 int	no_alpha(std::string str, int mode);

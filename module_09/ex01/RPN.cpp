@@ -29,7 +29,6 @@ double	RPN::division(double one, double two)
 
 void	RPN::do_op(const std::string& op)
 {
-	// std::cout << "f do-op *" << op[0] << std::endl;
 	if (store.size() < 2)
 		throw std::runtime_error("Error");
 	double one = store.top();
@@ -75,6 +74,11 @@ void	RPN::fill_stack(const char *str)
 
 	while (i < s.size())
 	{
+		if (isspace(s[i]))
+		{
+			i++;
+			continue ;
+		}
 		while (i < s.size() && s[i] != ' ')
 		{
 			nb.append(s.substr(i, 1));
