@@ -44,7 +44,7 @@ std::string	Btc::check_store_date(Bitcoin &store)
 	if (found == std::string::npos)
 		return line;
 	date = line.substr(0, found);
-	if (!no_alpha(date, DATE))
+	if (!no_alpha(date, DATE) || date.length() > 2)
 		store.valid = INVALID;
 	store.month = atol(date.c_str());
 	if (store.month < 9 && date[0] != '0')
@@ -52,11 +52,11 @@ std::string	Btc::check_store_date(Bitcoin &store)
 	store.date += date + "-";
 	line = trim(line, found);
 	found = line.find(" ");
+	date = line.substr(0, found);
 	if (found == std::string::npos)
 		return line;
-	date = line.substr(0, found);
 	line = trim(line, found);
-	if (!no_alpha(date, DATE))
+	if (!no_alpha(date, DATE) || date.length() > 2)
 		store.valid = INVALID;
 	store.day = atol(date.c_str());
 	if (store.day < 9 && date[0] != '0')
@@ -138,19 +138,19 @@ void	Btc::exchange_bitcoins(Bitcoin &store)
 {
 	if (store.valid == NL)
 		return ;
-	if (store.date < "2009-01-02")
+	if (store.year < 2009 || (store.year == 2009 && store.month == 1 && store.day < 2))
 	{
-		std::cerr << "Error: huh?! what is a bitcoin? => " << store.date << std::endl;
+		std::cerr << "Error: bad input => " << store.date << std::endl;
 		return ;
 	}
 	if (store.month < 1 || store.month > 12)
 	{
-		std::cerr << "Error: bad input1 => " << store.date << std::endl;
+		std::cerr << "Error: bad input => " << store.date << std::endl;
 		return ; 
 	}
 	if (check_day(store))
 	{
-		std::cerr << "Error: bad input2 => " << store.date << std::endl;
+		std::cerr << "Error: bad input => " << store.date << std::endl;
 		return ;
 	}
 	if (store.elements_nb < 0)
@@ -158,29 +158,24 @@ void	Btc::exchange_bitcoins(Bitcoin &store)
 		std::cerr << "Error: not a positive number" << std::endl;
 		return ;
 	}
-	if (store.elements_nb > INT_MAX)
+	if (store.elements_nb > 1000)
 	{
 		std::cerr << "Error: too large a number" << std::endl;
 		return ;
 	}
 	if (store.valid == INVALID)
 	{
-		std::cerr << "Error: bad input3 => " << store.date << std::endl;
+		std::cerr << "Error: bad input => " << store.date << std::endl;
 		return ;
 	}
-	std::map<std::string, double>::iterator iter = DB.begin();
-	while (++iter != DB.end())
-	{
-		std::map<std::string, double>::iterator i = iter;
-		i++;
-		if (store.date == iter->first || store.date < i->first)
-		{
-			store.value = store.elements_nb * iter->second;
-			std::cout << store.date << " => " << store.elements_nb
-			<< " = " << store.value << std::endl;
-			break;
-		}
-	}
+	std::map<std::string, double>::iterator it = DB.find(store.date);
+	if (it == DB.end())
+		it = DB.lower_bound(store.date);
+	if (store.date.length() > 10)
+		it = --DB.end();
+	store.value = store.elements_nb * it->second;
+	std::cout << store.date << " => " << store.elements_nb
+	<< " = " << store.value << std::endl;
 }
 
 Btc::~Btc()

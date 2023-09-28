@@ -5,6 +5,7 @@
 #include <limits.h>
 #include <map>
 #include <cstdlib>
+#include <algorithm>
 
 #define DATE 0
 #define NB 1
