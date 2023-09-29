@@ -26,6 +26,7 @@ std::string	Btc::check_store_date(Bitcoin &store)
 	size_t found;
 
 	getline(in_file, line);
+	store.input = line;
 	if (line.empty())
 	{
 		store.valid = NL;
@@ -41,25 +42,21 @@ std::string	Btc::check_store_date(Bitcoin &store)
 	store.date = line.substr(0, found + 1);
 	line = trim(line, found);
 	found = line.find("-");
-	if (found == std::string::npos)
-		return line;
 	date = line.substr(0, found);
 	if (!no_alpha(date, DATE) || date.length() > 2)
 		store.valid = INVALID;
 	store.month = atol(date.c_str());
-	if (store.month < 9 && date[0] != '0')
+	if (store.month < 9 && date[0] != '0' && date.length())
 		date = "0" + date;
 	store.date += date + "-";
 	line = trim(line, found);
 	found = line.find(" ");
 	date = line.substr(0, found);
-	if (found == std::string::npos)
-		return line;
 	line = trim(line, found);
 	if (!no_alpha(date, DATE) || date.length() > 2)
 		store.valid = INVALID;
 	store.day = atol(date.c_str());
-	if (store.day < 9 && date[0] != '0')
+	if (store.day < 9 && date[0] != '0' && date.length())
 		date = "0" + date;
 	store.date += date;
 	return line;
@@ -165,7 +162,7 @@ void	Btc::exchange_bitcoins(Bitcoin &store)
 	}
 	if (store.valid == INVALID)
 	{
-		std::cerr << "Error: bad input => " << store.date << std::endl;
+		std::cerr << "Error: bad input => " << store.input << std::endl;
 		return ;
 	}
 	std::map<std::string, double>::iterator it = DB.find(store.date);

@@ -22,6 +22,7 @@ typedef struct Bitcoin
 	int		valid;
 	double	value;
 	std::string date;
+	std::string input;
 } Bitcoin;
 
 class Btc
