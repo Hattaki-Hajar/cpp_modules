@@ -29,11 +29,11 @@ class Btc
 {
 	std::ifstream in_file;
 	std::map<std::string, double> DB;
+	Btc(const Btc &copy);
+	Btc &operator=(const Btc &other);
 public:
 	/*  Canonical form  */
 	Btc();
-	Btc(const Btc &copy);
-	Btc &operator=(const Btc &other);
 	~Btc();
 	/*  Additional func  */
 	void	file_parser(const char *name);

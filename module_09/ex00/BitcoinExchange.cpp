@@ -81,7 +81,7 @@ void	Btc::file_parser(const char *name)
 		if ((line[i] != '|' || line[i + 1] != ' '))
 			store.valid = INVALID;
 		i++;
-		if (!isspace(line[i++]))
+		if (!isspace(line[i++]) || !line[i])
 			store.valid = INVALID;
 		store.elements_nb = atof(line.c_str() + i);
 		if (!no_alpha(line.c_str() + i, NB))
@@ -111,7 +111,7 @@ void	Btc::DB_parser(void)
 
 int	check_day(const Bitcoin &btc)
 {
-	if (btc.day > 31 || btc.day < 0)
+	if (btc.day > 31 || btc.day < 1)
 		return -1;
 	if (btc.month == 4 || btc.month == 6 ||btc.month == 9 ||btc.month == 11)
 	{
@@ -137,17 +137,17 @@ void	Btc::exchange_bitcoins(Bitcoin &store)
 		return ;
 	if (store.year < 2009 || (store.year == 2009 && store.month == 1 && store.day < 2))
 	{
-		std::cerr << "Error: bad input => " << store.date << std::endl;
+		std::cerr << "Error: bad input => " << store.input << std::endl;
 		return ;
 	}
-	if (store.month < 1 || store.month > 12)
+	if (store.month < 1 || store.month > 12 || store.date[0] == '0')
 	{
-		std::cerr << "Error: bad input => " << store.date << std::endl;
-		return ; 
+		std::cerr << "Error: bad input => " << store.input << std::endl;
+		return ;
 	}
 	if (check_day(store))
 	{
-		std::cerr << "Error: bad input => " << store.date << std::endl;
+		std::cerr << "Error: bad input => " << store.input << std::endl;
 		return ;
 	}
 	if (store.elements_nb < 0)
@@ -167,7 +167,7 @@ void	Btc::exchange_bitcoins(Bitcoin &store)
 	}
 	std::map<std::string, double>::iterator it = DB.find(store.date);
 	if (it == DB.end())
-		it = DB.lower_bound(store.date);
+		it = --DB.lower_bound(store.date);
 	if (store.date.length() > 10)
 		it = --DB.end();
 	store.value = store.elements_nb * it->second;

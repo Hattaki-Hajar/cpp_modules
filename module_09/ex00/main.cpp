@@ -10,7 +10,7 @@ int	no_alpha(std::string str, int mode)
 		if (!isdigit(str[i]) && mode == DATE)
 			return 0;
 		else if (mode == NB && ((!isdigit(str[i]) && str[i] != '.')
-				|| (str[i] == '.' && (point > 1 || i == size -1))))
+				|| (str[i] == '.' && (point > 1 || i == size -1 || !i))))
 			return 0;
 	}
 	return 1;

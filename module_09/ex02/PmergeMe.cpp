@@ -10,30 +10,16 @@ PmergeMe::PmergeMe(const PmergeMe &copy)
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 {
-	v_store = other.v_store;
-	l_store = other.l_store;
+	(void)other;
 	return *this;
-}
-
-PmergeMe::~PmergeMe()
-{}
-
-int PmergeMe::getVsize(void)
-{
-	return (v_store.size());
-}
-
-int PmergeMe::getDQsize(void)
-{
-	return (d_store.size());
 }
 
 void	PmergeMe::check_duplicates(int nb)
 {
 	unsigned int i = 0;
-	while (i < v_store.size())
+	while (i < v_sorted.size())
 	{
-		if (v_store[i] == nb)
+		if (v_sorted[i] == nb)
 			throw std::runtime_error("Error: found duplicates");
 		i++;
 	}
@@ -62,154 +48,122 @@ void	PmergeMe::parser(int ac, char *av[])
 		if (nb < INT_MIN || nb > INT_MAX)
 			throw std::runtime_error("Error: not an int");
 		check_duplicates(nb);
-		v_store.push_back(nb);
-		d_store.push_back(nb);
-		l_store.push_back(nb);
+		v_unsorted.push_back(nb);
+		d_unsorted.push_back(nb);
 	}
 }
-
+void	PmergeMe::unsorted_print(void)
+{
+	std::cout << "Before: ";
+	for (size_t i = 0; i < v_unsorted.size(); i++)
+		std::cout << v_unsorted[i] << " ";
+	std::cout << std::endl;
+}
+/*  Vector  */
 void	PmergeMe::v_print(void)
 {
 	std::cout << "After: ";
-	for (unsigned int i = 0; i < v_store.size(); i++)
-		std::cout << v_store[i] << " ";
+	for (unsigned int i = 0; i < v_sorted.size(); i++)
+		std::cout << v_sorted[i] << " ";
 	std::cout << std::endl;
 }
 
-void	PmergeMe::v_merge(int start, int mid, int end)
+void	PmergeMe::v_sort(void)
 {
-	int i = start, j = mid;
-	std::vector<int> temp;
-	temp.clear();
-
-	while (i < mid && j < end)
+	for (size_t i = 0; i < v_unsorted.size(); i++)
 	{
-		if (v_store[i] < v_store[j])
-			temp.push_back(v_store[i++]);
+		if (!i && v_unsorted.size() % 2)
+			v_pairs.push_back(std::make_pair(-1, v_unsorted[i]));
 		else
-			temp.push_back(v_store[j++]);
-	}
-	while (i < mid)
-		temp.push_back(v_store[i++]);
-	while (j < end)
-		temp.push_back(v_store[j++]);
-	i = start;
-	while (i < end)
-	{
-		v_store[i] = temp[i - start];
-		i++;
-	}
-}
-void	PmergeMe::v_insert(int start, int end)
-{
-	int tmp, j;
-
-	for (int i = start + 1; i < end; i++)
-	{
-		tmp = v_store[i];
-		j = i - 1;
-		while (j >= start && v_store[j] > tmp)
 		{
-			v_store[j + 1] = v_store[j];
-			j--;
+			v_pairs.push_back(std::make_pair(v_unsorted[i], v_unsorted[i + 1]));
+			i++;
 		}
-		v_store[j + 1] = tmp;
 	}
-}
-
-void	PmergeMe::v_sort(int start, int end)
-{
-	int mid;
-	if (end - start > 16)
+	for (size_t i = 0; i < v_pairs.size(); i++)
 	{
-		mid = (end + start) / 2;
-		v_sort(start, mid);
-		v_sort(mid, end);
-		v_merge(start, mid, end);
+		if (v_pairs[i].first > v_pairs[i].second)
+			std::swap(v_pairs[i].first, v_pairs[i].second);
 	}
-	else
-		v_insert(start, end);
-}
+	for (std::vector<std::pair<int, int> >::iterator i = v_pairs.begin(); i != v_pairs.end() - 1; i++)
+	{
+		std::vector<std::pair<int, int> >::iterator actual = i;
+		std::vector<std::pair<int, int> >::iterator after = i + 1;
+		while ((*actual).first > (*after).first)
+		{
+			std::swap(*actual, *after);
+			if (actual != v_pairs.begin())
+			{
+				after = actual;
+				actual -= 1;
+			}
+		}
+	}
+	for (size_t i = 0; i < v_pairs.size(); i++)
+	{
+		if (v_pairs[i].first != -1)
+			v_sorted.push_back(v_pairs[i].first);
+	}
+	for (size_t i = 0; i < v_pairs.size(); i++)
+	{
+		std::vector<int>::iterator it;
 
+		it = std::upper_bound(v_sorted.begin(), v_sorted.end(), v_pairs[i].second);
+		v_sorted.insert(it, v_pairs[i].second);
+	}
+}
 /* deque */
-
-void	PmergeMe::d_merge(int start, int mid, int end)
+void	PmergeMe::d_sort(void)
 {
-	int i = start, j = mid;
-	std::vector<int> temp;
-	temp.clear();
-
-	while (i < mid && j < end)
+	for (size_t i = 0; i < d_unsorted.size(); i++)
 	{
-		if (d_store[i] < d_store[j])
-			temp.push_back(d_store[i++]);
+		if (!i && d_unsorted.size() % 2)
+			d_pairs.push_back(std::make_pair(-1, d_unsorted[i]));
 		else
-			temp.push_back(d_store[j++]);
-	}
-	while (i < mid)
-		temp.push_back(d_store[i++]);
-	while (j < end)
-		temp.push_back(d_store[j++]);
-	i = start;
-	while (i < end)
-	{
-		d_store[i] = temp[i - start];
-		i++;
-	}
-}
-void	PmergeMe::d_insert(int start, int end)
-{
-	int tmp, j;
-
-	for (int i = start + 1; i < end; i++)
-	{
-		tmp = d_store[i];
-		j = i - 1;
-		while (j >= start && d_store[j] > tmp)
 		{
-			d_store[j + 1] = d_store[j];
-			j--;
+			d_pairs.push_back(std::make_pair(d_unsorted[i], d_unsorted[i + 1]));
+			i++;
 		}
-		d_store[j + 1] = tmp;
 	}
-}
-
-void	PmergeMe::d_sort(int start, int end)
-{
-	int mid;
-	if (end - start > 16)
+	for (size_t i = 0; i < d_pairs.size(); i++)
 	{
-		mid = (end + start) / 2;
-		d_sort(start, mid);
-		d_sort(mid, end);
-		d_merge(start, mid, end);
+		if (d_pairs[i].first > d_pairs[i].second)
+			std::swap(d_pairs[i].first, d_pairs[i].second);
 	}
-	else
-		d_insert(start, end);
+	for (std::deque<std::pair<int, int> >::iterator i = d_pairs.begin(); i != d_pairs.end() - 1; i++)
+	{
+		std::deque<std::pair<int, int> >::iterator actual = i;
+		std::deque<std::pair<int, int> >::iterator after = i + 1;
+		while ((*actual).first > (*after).first)
+		{
+			std::swap(*actual, *after);
+			if (actual != d_pairs.begin())
+			{
+				after = actual;
+				actual -= 1;
+			}
+		}
+	}
+	for (size_t i = 0; i < d_pairs.size(); i++)
+	{
+		if (d_pairs[i].first != -1)
+			d_sorted.push_back(d_pairs[i].first);
+	}
+	for (size_t i = 0; i < d_pairs.size(); i++)
+	{
+		std::deque<int>::iterator it;
+
+		it = std::upper_bound(d_sorted.begin(), d_sorted.end(), d_pairs[i].second);
+		d_sorted.insert(it, d_pairs[i].second);
+	}
 }
 
 void	PmergeMe::d_print(void)
 {
-	size_t i = 0;
 	std::cout << "After: ";
-	while (i < d_store.size())
-	{
-		std::cout  << d_store[i] << " ";
-		i++;
-	}
+	for (size_t i = 0; i < d_sorted.size(); i++)
+		std::cout << d_sorted[i] << " ";
 	std::cout << std::endl;
 }
 
-void PmergeMe::l_print(void)
-{
-	std::list<int>::iterator start = l_store.begin(),
-	end = l_store.end();
-
-	std::cout << "Before: ";
-	while (start != end)
-	{
-		std::cout << *start << " ";
-		start++;
-	}
-	std::cout << std::endl;
-}
+PmergeMe::~PmergeMe(){}

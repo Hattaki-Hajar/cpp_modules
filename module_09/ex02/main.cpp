@@ -1,13 +1,13 @@
 #include "PmergeMe.hpp"
 
-void	print_time(clock_t time, int mode, int size)
+void	PmergeMe::print_time(clock_t time, int mode)
 {
 	double	final_time = (double)(time * CLOCKS_PER_SEC) / 1000000.0;
-	std::cout << "Time to process a range of " << size << " elements with ";
+	std::cout << "Time to process a range of ";
 	if (mode == VECTOR)
-		std::cout << "std::vector : ";
+		std::cout << v_unsorted.size() << " elements with " << "std::vector : ";
 	else
-		std::cout << "std::deque : ";
+		std::cout << d_unsorted.size() << " elements with " << "std::deque : ";
 	std::cout << std::fixed << std::setprecision(5);
 	std::cout << final_time << " us" << std::endl;
 }
@@ -21,16 +21,17 @@ int main(int ac, char *av[])
 		PmergeMe p;
 		clock_t start, end;
 		p.parser(ac, av);
-		p.l_print();
+		p.unsorted_print();
 		start = clock();
-		p.v_sort(0, p.getVsize());
+		p.v_sort();
 		end = clock();
 		p.v_print();
-		print_time(end - start, VECTOR, p.getVsize());
+		p.print_time(end - start, VECTOR);
 		start = clock();
-		p.d_sort(0, p.getDQsize());
+		p.d_sort();
 		end = clock();
-		print_time(end - start, DEQUE, p.getVsize());
+		p.d_print();
+		p.print_time(end - start, DEQUE);
 	}
 	catch(const std::exception& e)
 	{

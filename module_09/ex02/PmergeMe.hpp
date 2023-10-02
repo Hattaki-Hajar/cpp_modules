@@ -7,38 +7,35 @@
 #include <limits.h>
 #include <time.h>
 #include <vector>
-#include <list>
 #include <deque>
+#include <algorithm>
 
 #define VECTOR 0
 #define DEQUE 1
 
 class PmergeMe
 {
-	std::vector<int>	v_store;
-	std::list<int>		l_store;
-	std::deque<int>		d_store;
+	std::vector<int>	v_unsorted;
+	std::vector<std::pair<int, int> >	v_pairs;
+	std::vector<int>	v_sorted;
+	std::deque<int>	d_unsorted;
+	std::deque<std::pair<int, int> >	d_pairs;
+	std::deque<int>		d_sorted;
+	PmergeMe(const PmergeMe &copy);
+	PmergeMe &operator=(const PmergeMe &other);
 public:
 	/*  Canonical form  */
 	PmergeMe();
-	PmergeMe(const PmergeMe &copy);
-	PmergeMe &operator=(const PmergeMe &other);
 	~PmergeMe();
-	/*  Getters  */
-	int getVsize(void);
-	int getDQsize(void);
 	/*  Additional func  */
 	void	parser(int ac, char *av[]);
 	void	check_duplicates(int nb);
 	void	v_print(void);
 	void	d_print(void);
-	void	l_print(void);
+	void	unsorted_print();
+	void	print_time(clock_t time, int mode);
 	/*  Vector sort  */
-	void	v_sort(int start, int end);
-	void	v_merge(int start, int mid, int end);
-	void	v_insert(int start, int end);
+	void	v_sort(void);
 	/*  deque sort  */
-	void	d_sort(int start, int end);
-	void	d_merge(int start, int mid, int end);
-	void	d_insert(int start, int end);
+	void	d_sort(void);
 };
